@@ -13,11 +13,11 @@
 # limitations under the License.
 
 # Inherit some common CM stuff.
-$(call inherit-product, vendor/cm/config/common_full_tablet_wifionly.mk)
+$(call inherit-product, vendor/cm/config/common.mk)
 
 # Inherit device configuration for bowser
 $(call inherit-product, device/amazon/tate/full_tate.mk)
-$(call inherit-product, device/amazon/bowser-common/cm.mk)
+$(call inherit-product, device/amazon/bowser-common/omni_tate.mk)
 
 #TARGET_SCREEN_WIDTH := 1280
 TARGET_SCREEN_WIDTH := 480
