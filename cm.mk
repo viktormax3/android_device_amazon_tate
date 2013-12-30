@@ -23,7 +23,7 @@ $(call inherit-product, device/amazon/bowser-common/cm.mk)
 TARGET_SCREEN_WIDTH := 480
 TARGET_SCREEN_HEIGHT := 800
 
-PRODUCT_NAME := cm_tate
+PRODUCT_NAME := omni_tate
 PRODUCT_DEVICE := tate
 PRODUCT_MODEL := Amazon Kindle Fire HD
 PRODUCT_RELEASE_NAME := KindleFireHD
