@@ -13,7 +13,7 @@
 # limitations under the License.
 
 # Inherit some common CM stuff.
-$(call inherit-product, vendor/cm/config/common.mk)
+$(call inherit-product, vendor/omni/config/common.mk)
 
 # Inherit device configuration for bowser
 $(call inherit-product, device/amazon/tate/full_tate.mk)
