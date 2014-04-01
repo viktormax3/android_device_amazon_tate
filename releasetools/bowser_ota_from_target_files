@@ -363,14 +363,11 @@ def SignOutput(temp_zip_name, output_zip_name):
 
 def AppendAssertions(script, info_dict):
   if OPTIONS.override_device == "auto":
-     if OPTIONS.override_prop:
-      device = GetBuildProp("ro.build.product", info_dict)
-     else:
     device = GetBuildProp("ro.product.device", info_dict)
   else:
     device = OPTIONS.override_device
   script.AssertDevice(device)
-
+  
 # This is a superhacky format just for /system.
 # creates badblock at a predetermined location and fills it with addresses
 def FormatPartitionSystem(self, partition):
@@ -481,8 +478,8 @@ def WriteFullOTAPackage(input_zip, output_zip):
   script.ShowProgress(0.5, 0)
 
     if OPTIONS.wipe_user_data:
+    script.FormatPartition("/data")
     script.Print("Formatting /data")
-    script.FormatPartition("/data", OPTIONS.mount_by_label)
     
   script.Print("#######################################");
   script.Print("# _____            __  __  ______     #");
