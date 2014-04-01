@@ -120,24 +120,13 @@ def MostPopularKey(d, default):
 def IsSymlink(info):
   """Return true if the zipfile.ZipInfo object passed in represents a
   symlink."""
-  return (info.external_attr >> 16 & 0770000) == 0120000
+  return (info.external_attr >> 16) & 0770000 == 0120000
 
 def IsRegular(info):
   """Return true if the zipfile.ZipInfo object passed in represents a
   symlink."""
   return (info.external_attr >> 28) == 010
   
-  def ClosestFileMatch(src, tgtfiles, existing):
-  """Returns the closest file match between a source file and list
-     of potential matches.  The exact filename match is preferred,
-     then the sha1 is searched for, and finally a file with the same
-     basename is evaluated.  Rename support in the updater-binary is
-     required for the latter checks to be used."""
-
-  result = tgtfiles.get("path:" + src.name)
-  if result is not None:
-    return result
-
   if not OPTIONS.target_info_dict.get("update_rename_support", False):
     return None
 
