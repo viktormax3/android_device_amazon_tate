@@ -623,7 +623,7 @@ def WriteIncrementalOTAPackage(target_zip, source_zip, output_zip):
   renames = {}
   largest_source_size = 0
   
-    matching_file_cache = {}
+  matching_file_cache = {}
   for fn in source_data.keys():
     sf = source_data[fn]
     assert fn == sf.name
@@ -669,14 +669,14 @@ def WriteIncrementalOTAPackage(target_zip, source_zip, output_zip):
       patch_list.append((sf.name, tf, sf, tf.size, common.sha1(d).hexdigest()))
       largest_source_size = max(largest_source_size, sf.size)
       
-      if not OPTIONS.override_prop:
-  source_fp = GetBuildProp("ro.build.fingerprint", OPTIONS.source_info_dict)
-  target_fp = GetBuildProp("ro.build.fingerprint", OPTIONS.target_info_dict)
-  metadata["pre-build"] = source_fp
-  metadata["post-build"] = target_fp
+  if not OPTIONS.override_prop:
+    source_fp = GetBuildProp("ro.build.fingerprint", OPTIONS.source_info_dict)
+    target_fp = GetBuildProp("ro.build.fingerprint", OPTIONS.target_info_dict)
+    metadata["pre-build"] = source_fp
+    metadata["post-build"] = target_fp
 
-  script.Mount("/system", OPTIONS.mount_by_label)
-  script.AssertSomeFingerprint(source_fp, target_fp)
+    script.Mount("/system", OPTIONS.mount_by_label)
+    script.AssertSomeFingerprint(source_fp, target_fp)
 
   source_boot = common.GetBootableImage(
       "/tmp/boot.img", "boot.img", OPTIONS.source_tmp, "BOOT",
