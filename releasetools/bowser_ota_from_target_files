@@ -496,7 +496,8 @@ def WriteFullOTAPackage(input_zip, output_zip):
     WritePolicyConfig(OPTIONS.info_dict["selinux_fc"], output_zip)
 
   script.Print("Formatting /system")
-  script.FormatPartition("/system", OPTIONS.mount_by_label)
+  #script.FormatPartition("/system", OPTIONS.mount_by_label)
+  FormatPartitionSystem(script, "/system", OPTIONS.mount_by_label)
   if not OPTIONS.mount_by_label:
     script.Mount("/system")
   
